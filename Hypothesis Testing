@@ -1,0 +1,19 @@
+import pandas as pd
+from scipy.stats import ttest_ind
+
+# Load dataset
+df = pd.read_csv("8cantwait_full_dataset Sprint 3- Copy(in) copy.csv")
+
+
+# Calculate change in killings
+df["Change_in_Killings"] = df["Police_Killing_Per_Million_Black_Pop_2024"] - df["Police_Killing_Per_Million_Black_Pop_2020"]
+
+# Split into groups
+with_policies = df[df["Use_of_Force_Policy_(0/8)"] > 0]["Change_in_Killings"]
+without_policies = df[df["Use_of_Force_Policy_(0/8)"] == 0]["Change_in_Killings"]
+
+# T-test
+t_stat, p_value = ttest_ind(with_policies, without_policies, equal_var=False)  # Welch’s t-test for unequal variances
+
+print(f"T-statistic: {t_stat:.2f}")
+print(f"P-value: {p_value:.4f}")
