@@ -1,0 +1,11 @@
+import pandas as pd
+
+df = pd.read_csv("8cantwait_full_dataset Sprint 3- Copy(in) copy.csv")
+
+# Pearson correlation coefficient for 2020
+correlation_2020 = df["Use_of_Force_Policy_(0/8)"].corr(df["Police_Killing_Per_Million_Black_Pop_2020"])
+print(f"Correlation between Policies and Killings (2020): {correlation_2020:.2f}")
+
+# Pearson correlation coefficient for 2024
+correlation_2024 = df["Use_of_Force_Policy_(0/8)"].corr(df["Police_Killing_Per_Million_Black_Pop_2024"])
+print(f"Correlation between Policies and Killings (2024): {correlation_2024:.2f}")
