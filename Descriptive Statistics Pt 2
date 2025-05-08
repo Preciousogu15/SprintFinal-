@@ -1,0 +1,17 @@
+import pandas as pd
+
+# Load your dataset—use the exact path you have in PyCharm:
+df = pd.read_csv("8cantwait_full_dataset Sprint 3- Copy(in) copy.csv")
+
+# Group by the number of policies enacted (0–8)
+grouped = df.groupby('Use_of_Force_Policy_(0/8)').agg(
+    Mean_Killings_2020=('Police_Killing_Per_Million_Black_Pop_2020', 'mean'),
+    Mean_Killings_2024=('Police_Killing_Per_Million_Black_Pop_2024', 'mean')
+).reset_index()
+
+# Calculate absolute and percent change
+grouped['Absolute_Change'] = grouped['Mean_Killings_2024'] - grouped['Mean_Killings_2020']
+grouped['Percent_Change'] = (grouped['Absolute_Change'] / grouped['Mean_Killings_2020']) * 100
+
+# Print the results
+print(grouped.to_string(index=False))
