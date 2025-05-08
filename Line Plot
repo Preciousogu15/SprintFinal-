@@ -1,0 +1,23 @@
+import pandas as pd
+import matplotlib.pyplot as plt    
+import seaborn as sns
+
+df = pd.read_csv("8cantwait_full_dataset Sprint 3- Copy(in) copy.csv")
+
+df['Change_in_Killings'] = (
+    df['Police_Killing_Per_Million_Black_Pop_2024']
+    - df['Police_Killing_Per_Million_Black_Pop_2020']
+)
+
+plt.figure(figsize=(10, 6))
+sns.lineplot(
+    data=df,
+    x='Use_of_Force_Policy_(0/8)',
+    y='Change_in_Killings',
+    marker='o'
+)
+plt.title('Change in Police Killings per Million Black Population (2020→2024)\nby #8CantWait Policies Enacted')
+plt.xlabel('Number of #8CantWait Policies Enacted')
+plt.ylabel('Change in Killings per Million')
+plt.grid(True)
+plt.show()
