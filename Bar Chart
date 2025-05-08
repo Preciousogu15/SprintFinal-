@@ -1,0 +1,22 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+
+
+df = pd.read_csv("8cantwait_full_dataset Sprint 3- Copy(in) copy.csv")
+
+sns.set(style="whitegrid")
+
+# Prepare data for plotting
+df_melted = df.melt(id_vars=['Use_of_Force_Policy_(0/8)'], value_vars=['Police_Killing_Per_Million_Black_Pop_2020', 'Police_Killing_Per_Million_Black_Pop_2024'],
+                    var_name='Year', value_name='Police_Killings')
+
+plt.figure(figsize=(10, 6))
+sns.barplot(x='Use_of_Force_Policy_(0/8)', y='Police_Killings', hue='Year', data=df_melted, palette='viridis')
+
+plt.title('Police Killings per Million Black Population by Number of #8CantWait Policies Enacted (2020 vs. 2024)', fontsize=14)
+plt.xlabel('Number of #8CantWait Policies Enacted', fontsize=12)
+plt.ylabel('Police Killings per Million', fontsize=12)
+plt.legend(title='Year', loc='upper left')
+
+plt.show()
