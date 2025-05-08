@@ -22,7 +22,7 @@ Process:
     * `0` if it implemented none.
   * This classification helped distinguish reform-heavy states from those with no reforms.
 
-### 2. **Fatal Police Killings Data
+### 2. Fatal Police Killings Data
 
 Source: [Mapping Police Violence](https://mappingpoliceviolence.org/)
 Process:
@@ -31,7 +31,7 @@ Process:
   * Focused specifically on killings of Black individuals.
   * Standardized the data by calculating killings per million Black residents using U.S. Census population data.
 
-### 3. **Dataset Integration
+### 3. Dataset Integration
 
 * Merged policy data and police killings data by state.
 * Added demographic variables (e.g., % Black population) to better assess disparities.
